@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
  */
 
 public class MarketDataTest {
-    @Test public void testMarketData() {
+    @Test 
+    public void testMarketData() {
         MarketData classToTest = new MarketData();
         assertTrue("Error, random is too high", 25 >= classToTest.move);
         assertTrue("Error, random is too low",  -25  <= classToTest.move);

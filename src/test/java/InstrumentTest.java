@@ -1,4 +1,11 @@
+import java.math.BigDecimal;
+
 import instruments.AUDUSD;
+import instruments.EURGBP;
+import instruments.EURJPY;
+import instruments.EURUSD;
+import instruments.GBPUSD;
+import instruments.USDJPY;
 
 import org.junit.Test;
 
@@ -12,13 +19,19 @@ import static org.junit.Assert.*;
  */
 
 public class InstrumentTest {
-    @Test public void testInstrument() {
-        AUDUSD classToTest = new AUDUSD();
-        assertSame("Error, mid price is wrong", 0.72, classToTest.mid);
+    @Test 
+    public void testInstrument() {
+    	BigDecimal mid = BigDecimal.valueOf(0.72);
+        assertEquals("Error, mid price is wrong", mid, AUDUSD.mid);
     }
     
     @Test
     public void testAssertNotNull() {
       assertNotNull("should not be null", new AUDUSD());
+      assertNotNull("should not be null", new EURGBP());
+      assertNotNull("should not be null", new EURJPY());
+      assertNotNull("should not be null", new EURUSD());
+      assertNotNull("should not be null", new GBPUSD());
+      assertNotNull("should not be null", new USDJPY());
     }
 }
