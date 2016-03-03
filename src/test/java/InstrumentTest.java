@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import instruments.AUDUSD;
 import instruments.EURGBP;
@@ -6,6 +7,7 @@ import instruments.EURJPY;
 import instruments.EURUSD;
 import instruments.GBPUSD;
 import instruments.USDJPY;
+import instruments.AUDUSD.Spreads;
 
 import org.junit.Test;
 
@@ -20,9 +22,16 @@ import static org.junit.Assert.*;
 
 public class InstrumentTest {
     @Test 
-    public void testInstrument() {
+    public void testAUDUSDMid() {
     	BigDecimal mid = BigDecimal.valueOf(0.72);
         assertEquals("Error, mid price is wrong", mid, AUDUSD.mid);
+    }
+    
+    @Test 
+    public void testAUDUSDSpread() {
+    	BigDecimal spread = new BigDecimal(0.00030).setScale(5, RoundingMode.HALF_UP);
+
+        assertEquals("Spread has changed", spread, Spreads.band1offer.getSpread());
     }
     
     @Test

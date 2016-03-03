@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import simulator.MarketData;
+import simulator.Venue;
 import venues.Ebs;
 import venues.Fxall;
 import venues.Hotspot;
@@ -15,7 +17,16 @@ import static org.junit.Assert.*;
  */
 
 public class VenueTest {
-
+	
+	@Test
+    public void testVenue() {
+		Venue v = new Venue();
+		MarketData m = v.MarketDataUpdate("EURUSD", "EBS");
+	
+	    assertNotNull("should not be null", m.bids);
+	    assertNotNull("should not be null", m.offers);	    
+	}
+	
     @Test
     public void testAssertNotNull() {
       assertNotNull("should not be null", new Ebs());

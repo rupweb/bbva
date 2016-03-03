@@ -34,6 +34,10 @@ public class Venue {
 		LAVA
 	}
 	
+	public Venue() {
+		// null constructor for tests only
+	}
+	
 	public Venue(DisruptorMarket marketD) throws InterruptedException {
 		
 		String instrument, venue;
@@ -55,7 +59,7 @@ public class Venue {
 		System.out.println("Finished producing market updates @ " + LocalDateTime.now());
 	}
 
-	private MarketData MarketDataUpdate(String instrument, String venue) {
+	public MarketData MarketDataUpdate(String instrument, String venue) {
 		
 		log.debug("In MarketDataUpdate with instrument: " + instrument + ", venue: " + venue);
 		
