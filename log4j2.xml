@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="BBVA" packages="">
+	<Appenders>
+		<RollingRandomAccessFile name="LogTrace" fileName="logs/BBVATrace.log" filePattern="../logs/$${date:yyyy-MM}/fixTrace-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="25 MB"/>
+			</Policies>
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="LogInfo" fileName="logs/BBVAInfo.log" filePattern="../logs/$${date:yyyy-MM}/fixInfo-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %m %ex%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="25 MB"/>
+			</Policies>
+		</RollingRandomAccessFile>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout>
+            	<Pattern>%d %m %ex%n</Pattern>
+            </PatternLayout>
+        </Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="monitor" level="info">
+		    <AppenderRef ref="LogInfo" level="info"/>
+            <AppenderRef ref="LogTrace" level="trace"/>
+		</Logger>
+		  <Root level="info">
+          <AppenderRef ref="STDOUT" />
+        </Root>
+	</Loggers>
+</Configuration>
